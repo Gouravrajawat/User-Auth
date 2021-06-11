@@ -23,6 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(bodyParser.json());
 
+/*
 app.post("/api/login", (req, res) => {
   var user = req.body;
   try {
@@ -92,6 +93,7 @@ app.post("/api/logout", (req, res) => {
       setTimeout(() => res.json(error), timer);
     });
 });
+*/ //No need of them any more.
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
