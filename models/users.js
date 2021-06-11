@@ -8,7 +8,6 @@ let userSchema = new Schema(
       type: String,
       required: true,
     },
-    {
     lastName: {
       type: String,
       required: true,

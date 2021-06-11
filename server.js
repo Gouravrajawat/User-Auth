@@ -7,7 +7,7 @@ const { Mongoose } = require('mongoose');
 const cors = require("cors");
 const port = process.env.PORT || 8080;
 const connectDB = require('./config/db');
-
+const AuthRoute = require('./routes/auth.routes');
 dotenv.config({ path: './config/config.env' });
 
 connectDB();
@@ -94,3 +94,5 @@ app.post("/api/logout", (req, res) => {
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
+
+app.use('/api/', AuthRoute);
