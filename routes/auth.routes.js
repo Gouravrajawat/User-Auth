@@ -13,8 +13,7 @@ router.post("/signup", (req, res, next) => {
       })
     }
     else {
-      const user = new User({
-        _id: new moongoose.type.ObjectId,
+      const user = new users({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
@@ -76,4 +75,5 @@ router.post('/login', (req, res, next) => {
       })
     })
 })
+
 module.exports = router;

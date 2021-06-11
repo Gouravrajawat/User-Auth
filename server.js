@@ -95,6 +95,11 @@ app.post("/api/logout", (req, res) => {
 });
 */ //No need of them any more.
 
+app.get('/api', (req, res) => {
+  res.send('Listening')
+})
+
+app.use('/api/user/', AuthRoute);
+
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-app.use('/api/', AuthRoute);
