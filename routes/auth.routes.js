@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router();
 const mongoose = require('mongoose');
-const users = require("../models/users");
+const User = require("../models/user");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -13,7 +13,7 @@ router.post("/signup", (req, res, next) => {
       })
     }
     else {
-      const user = new users({
+      const user = new User({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
@@ -22,7 +22,7 @@ router.post("/signup", (req, res, next) => {
 
       user.save()
         .then(result => {
-          res.status(200).json({
+          res.status(201).json({
             new_user: result
           })
         })
@@ -35,11 +35,11 @@ router.post("/signup", (req, res, next) => {
   })
 })
 router.post('/login', (req, res, next) => {
-  users.find({ email: req.body.email })
+  User.find({ email: req.body.email })
     .exec()
     .then(user => {
       if (user.length < 1) {
-        return res.status(401).json({
+        return res.status(404).json({
           msg: 'user not found !!'
         })
       }

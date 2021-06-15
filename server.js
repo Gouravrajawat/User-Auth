@@ -41,7 +41,6 @@ app.post("/api/login", (req, res) => {
     res.status(500).json(error);
   }
 });
-
 app.post("/api/signup", (req, res) => {
   var user = req.body.newUser;
   try {
@@ -60,7 +59,6 @@ app.post("/api/signup", (req, res) => {
     res.status(500).json(error);
   }
 });
-
 const queryLogout = (user) => {
   return new Promise((resolve, reject) => {
     if (
@@ -81,10 +79,8 @@ const queryLogout = (user) => {
     }
   });
 };
-
 app.post("/api/logout", (req, res) => {
   let timer = Math.random() * 2000 + 1000;
-
   queryLogout(req.body)
     .then((outcome) => {
       setTimeout(() => res.json(outcome), timer);
